@@ -4,7 +4,6 @@ package com.glmapper.simple.common;
  * SimpleException
  *
  * @author: Jerry
- * @date: 2018/6/22
  */
 public class SimpleException extends RuntimeException {
 

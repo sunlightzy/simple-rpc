@@ -22,7 +22,8 @@ public class SimpleDecoder extends ByteToMessageDecoder {
 
     @Override
     public void decode(ChannelHandlerContext ctx, ByteBuf in, List<Object> out) throws Exception {
-        if (in.readableBytes() < 4) {
+        int headerLength = 4;
+        if (in.readableBytes() < headerLength) {
             return;
         }
         in.markReaderIndex();

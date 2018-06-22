@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 /**
  * RPC请求
+ *
+ * @author Jerry
  */
 public class SimpleRequest implements Serializable {
 

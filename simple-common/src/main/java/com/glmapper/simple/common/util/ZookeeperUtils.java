@@ -8,6 +8,11 @@ import org.slf4j.LoggerFactory;
 import java.io.IOException;
 import java.util.concurrent.CountDownLatch;
 
+/**
+ * zookeeper utils
+ *
+ * @author Jerry
+ */
 public final class ZookeeperUtils {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ZookeeperUtils.class);

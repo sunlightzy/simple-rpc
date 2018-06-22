@@ -6,8 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 /**
  * 启动类
  *
- * @author:  Jerry
- * @date: 2018/6/22
+ * @author: Jerry
  */
 @SpringBootApplication
 public class ProviderBootstrap {

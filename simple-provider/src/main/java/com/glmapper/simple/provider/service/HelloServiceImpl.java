@@ -7,10 +7,9 @@ import com.glmapper.simple.provider.annotation.SimpleProvider;
  * service implement class
  *
  * @author: Jerry
- * @date: 2018/6/22
  */
 @SimpleProvider(HelloService.class)
-public class HelloServiceImpl implements HelloService{
+public class HelloServiceImpl implements HelloService {
 
     /**
      * service function

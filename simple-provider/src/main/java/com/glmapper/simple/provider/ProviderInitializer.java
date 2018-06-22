@@ -2,9 +2,9 @@ package com.glmapper.simple.provider;
 
 
 import com.glmapper.simple.common.*;
-import com.glmapper.simple.provider.property.SimpleProviderProperties;
-import com.glmapper.simple.provider.handler.SimpleHandler;
 import com.glmapper.simple.provider.annotation.SimpleProvider;
+import com.glmapper.simple.provider.handler.SimpleHandler;
+import com.glmapper.simple.provider.property.SimpleProviderProperties;
 import com.glmapper.simple.provider.registry.ServiceRegistry;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.*;
@@ -99,7 +99,7 @@ public class ProviderInitializer implements ApplicationContextAware, Initializin
 
             if (serviceRegistry != null) {
                 // registry server address
-                String serverAddress = host + port;
+                String serverAddress = host + ":" + port;
                 serviceRegistry.register(serverAddress);
             }
 
@@ -121,6 +121,7 @@ public class ProviderInitializer implements ApplicationContextAware, Initializin
             allNetInterfaces = NetworkInterface.getNetworkInterfaces();
         } catch (SocketException e) {
             LOGGER.error("get local address error,cause:", e);
+            return null;
         }
         while (allNetInterfaces.hasMoreElements()) {
             NetworkInterface netInterface = allNetInterfaces.nextElement();

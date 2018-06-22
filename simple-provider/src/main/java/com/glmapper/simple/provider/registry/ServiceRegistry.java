@@ -10,6 +10,8 @@ import org.apache.zookeeper.data.Stat;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.nio.charset.Charset;
+
 /**
  * connect zookeeper to registry service
  *
@@ -54,8 +56,9 @@ public class ServiceRegistry {
 
     private void createNode(ZooKeeper zk, String data) {
         try {
-            byte[] bytes = data.getBytes();
-            String path = zk.create(zookeeperProperties.getDataPath(), bytes, ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.EPHEMERAL_SEQUENTIAL);
+            byte[] bytes = data.getBytes(Charset.forName("UTF-8"));
+            String dataPath = zookeeperProperties.getRootPath() + zookeeperProperties.getDataPath();
+            String path = zk.create(dataPath, bytes, ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.EPHEMERAL_SEQUENTIAL);
             LOGGER.debug("create zookeeper node ({} => {})", path, data);
         } catch (KeeperException | InterruptedException e) {
             LOGGER.error("create zookeeper node error,cause:", e);

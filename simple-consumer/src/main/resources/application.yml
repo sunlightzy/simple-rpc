@@ -3,7 +3,3 @@ zookeeper:
   root-path: /simple
   timeout: 5000
   data-path: "/data"
-
-simple:
-  provider:
-    port: 10086

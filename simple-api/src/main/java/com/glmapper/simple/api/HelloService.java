@@ -4,7 +4,6 @@ package com.glmapper.simple.api;
  * service interface
  *
  * @author: Jerry
- * @date: 2018/6/22
  */
 public interface HelloService {
 

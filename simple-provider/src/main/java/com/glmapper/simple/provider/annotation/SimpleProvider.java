@@ -9,6 +9,8 @@ import java.lang.annotation.Target;
 
 /**
  * RPC接口注解
+ *
+ * @author Jerry
  */
 @Target({ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
