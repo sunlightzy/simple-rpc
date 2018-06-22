@@ -36,8 +36,8 @@ public class ConsumerBootstrap {
             try {
                 Thread.sleep(3000);
                 String ack = CHARACTERS.get(ThreadLocalRandom.current().nextInt(CHARACTERS.size()));
-                String result = helloService.hello(ack);
-                System.out.println(result);
+                String echo = helloService.hello(ack);
+                System.out.println(echo);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

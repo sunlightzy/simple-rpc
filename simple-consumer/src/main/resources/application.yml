@@ -1,5 +1,9 @@
+spring:
+  application:
+    name: simple-consumer
+
 zookeeper:
   address: ecs.co:2181
-  root-path: /simple
+  root-path: '/simple'
   timeout: 5000
-  data-path: "/data"
+  data-path: '/data'

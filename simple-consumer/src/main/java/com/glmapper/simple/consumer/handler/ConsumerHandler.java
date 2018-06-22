@@ -1,4 +1,4 @@
-package com.glmapper.simple.consumer;
+package com.glmapper.simple.consumer.handler;
 
 import com.glmapper.simple.common.SimpleDecoder;
 import com.glmapper.simple.common.SimpleEncoder;
@@ -19,9 +19,9 @@ import java.util.concurrent.CountDownLatch;
  *
  * @author Jerry
  */
-public class SimpleConsumer extends SimpleChannelInboundHandler<SimpleResponse> {
+public class ConsumerHandler extends SimpleChannelInboundHandler<SimpleResponse> {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(SimpleConsumer.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(ConsumerHandler.class);
 
     private int port;
 
@@ -31,7 +31,7 @@ public class SimpleConsumer extends SimpleChannelInboundHandler<SimpleResponse> 
 
     private CountDownLatch latch = new CountDownLatch(1);
 
-    public SimpleConsumer(String host, int port) {
+    public ConsumerHandler(String host, int port) {
         this.host = host;
         this.port = port;
     }
@@ -61,7 +61,7 @@ public class SimpleConsumer extends SimpleChannelInboundHandler<SimpleResponse> 
                             // 将 RPC 响应进行解码（为了处理响应）
                             .addLast(new SimpleDecoder(SimpleResponse.class))
                             // 使用 RpcClient 发送 RPC 请求
-                            .addLast(SimpleConsumer.this);
+                            .addLast(ConsumerHandler.this);
                 }
             };
             bootstrap.group(group).channel(NioSocketChannel.class)

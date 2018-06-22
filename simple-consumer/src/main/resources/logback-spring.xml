@@ -21,7 +21,7 @@
         </root>
     </springProfile>
 
-    <logger name="org.springframework" level="INFO"/>
+    <logger name="org.springframework" level="DEBUG"/>
     <logger name="com.glmapper" level="DEBUG"/>
 </configuration>
 

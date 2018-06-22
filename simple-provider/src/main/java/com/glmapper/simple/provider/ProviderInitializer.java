@@ -55,7 +55,7 @@ public class ProviderInitializer implements ApplicationContextAware, Initializin
 
     @Override
     public void setApplicationContext(ApplicationContext ctx) throws BeansException {
-        // 获取所有带有 RpcService 注解的 Spring Bean
+        // 获取被 SimpleProvider 注解的 Bean
         Map<String, Object> serviceBeanMap = ctx.getBeansWithAnnotation(SimpleProvider.class);
         if (MapUtils.isNotEmpty(serviceBeanMap)) {
             for (Object serviceBean : serviceBeanMap.values()) {
@@ -75,15 +75,13 @@ public class ProviderInitializer implements ApplicationContextAware, Initializin
                 @Override
                 public void initChannel(SocketChannel channel) throws Exception {
                     channel.pipeline()
-                            // 将 RPC 请求进行解码（为了处理请求）
                             .addLast(new SimpleDecoder(SimpleRequest.class))
-                            // 将 RPC 响应进行编码（为了返回响应）
                             .addLast(new SimpleEncoder(SimpleResponse.class))
-                            // 处理 RPC 请求
                             .addLast(new SimpleHandler(handlerMap));
                 }
             };
-            bootstrap.group(bossGroup, workerGroup).channel(NioServerSocketChannel.class)
+            bootstrap.group(bossGroup, workerGroup)
+                    .channel(NioServerSocketChannel.class)
                     .childHandler(channelHandler)
                     .option(ChannelOption.SO_BACKLOG, 128)
                     .childOption(ChannelOption.SO_KEEPALIVE, true);
@@ -98,11 +96,9 @@ public class ProviderInitializer implements ApplicationContextAware, Initializin
             LOGGER.debug("server started on port {}", port);
 
             if (serviceRegistry != null) {
-                // registry server address
                 String serverAddress = host + ":" + port;
                 serviceRegistry.register(serverAddress);
             }
-
             future.channel().closeFuture().sync();
         } finally {
             workerGroup.shutdownGracefully();
@@ -116,7 +112,7 @@ public class ProviderInitializer implements ApplicationContextAware, Initializin
      * @return
      */
     private String getLocalHost() {
-        Enumeration<NetworkInterface> allNetInterfaces = null;
+        Enumeration<NetworkInterface> allNetInterfaces;
         try {
             allNetInterfaces = NetworkInterface.getNetworkInterfaces();
         } catch (SocketException e) {
