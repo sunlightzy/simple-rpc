@@ -1,6 +1,6 @@
 package com.glmapper.simple.common;
 
-import com.glmapper.simple.common.util.SerializationUtil;
+import com.glmapper.simple.common.serializer.FastJsonSerializer;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.ByteToMessageDecoder;
@@ -38,7 +38,7 @@ public class SimpleDecoder extends ByteToMessageDecoder {
         byte[] data = new byte[dataLength];
         in.readBytes(data);
 
-        Object obj = SerializationUtil.deserialize(data, genericClass);
+        Object obj = FastJsonSerializer.getInstance().deserialize(data, genericClass);
         out.add(obj);
     }
 }

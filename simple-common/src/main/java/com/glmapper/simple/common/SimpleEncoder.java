@@ -1,6 +1,6 @@
 package com.glmapper.simple.common;
 
-import com.glmapper.simple.common.util.SerializationUtil;
+import com.glmapper.simple.common.serializer.FastJsonSerializer;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.MessageToByteEncoder;
@@ -21,7 +21,7 @@ public class SimpleEncoder extends MessageToByteEncoder {
     @Override
     public void encode(ChannelHandlerContext ctx, Object in, ByteBuf out) throws Exception {
         if (genericClass.isInstance(in)) {
-            byte[] data = SerializationUtil.serialize(in);
+            byte[] data = FastJsonSerializer.getInstance().serialize(in);
             out.writeInt(data.length);
             out.writeBytes(data);
         }

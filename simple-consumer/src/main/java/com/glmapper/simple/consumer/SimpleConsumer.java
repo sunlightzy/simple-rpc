@@ -23,15 +23,13 @@ public class SimpleConsumer extends SimpleChannelInboundHandler<SimpleResponse> 
 
     private static final Logger LOGGER = LoggerFactory.getLogger(SimpleConsumer.class);
 
-    private String host;
-
     private int port;
+
+    private String host;
 
     private SimpleResponse response;
 
     private CountDownLatch latch = new CountDownLatch(1);
-
-    private final Object obj = new Object();
 
     public SimpleConsumer(String host, int port) {
         this.host = host;

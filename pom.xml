@@ -16,6 +16,7 @@
     </modules>
 
     <properties>
+        <fastjson.version>1.2.40</fastjson.version>
         <slf4j.version>1.7.25</slf4j.version>
         <spring.boot.version>1.5.14.RELEASE</spring.boot.version>
         <commons.collection4.version>4.0</commons.collection4.version>
@@ -25,6 +26,12 @@
     </properties>
     <dependencyManagement>
         <dependencies>
+            <!--FastJson-->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>${fastjson.version}</version>
+            </dependency>
             <!--uniform log version-->
             <dependency>
                 <groupId>org.slf4j</groupId>
@@ -60,23 +67,6 @@
                 <groupId>io.netty</groupId>
                 <artifactId>netty-all</artifactId>
                 <version>${netty.version}</version>
-            </dependency>
-            <!-- Objenesis -->
-            <dependency>
-                <groupId>org.objenesis</groupId>
-                <artifactId>objenesis</artifactId>
-                <version>2.1</version>
-            </dependency>
-            <!-- Protostuff -->
-            <dependency>
-                <groupId>com.dyuproject.protostuff</groupId>
-                <artifactId>protostuff-core</artifactId>
-                <version>1.0.8</version>
-            </dependency>
-            <dependency>
-                <groupId>com.dyuproject.protostuff</groupId>
-                <artifactId>protostuff-runtime</artifactId>
-                <version>1.0.8</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
