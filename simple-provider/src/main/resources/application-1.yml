@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: simple-provider
+
+zookeeper:
+  address: ecs.co:2181
+  root-path: '/simple'
+  timeout: 5000
+  data-path: '/data'
+
+simple:
+  provider:
+    port: 10086

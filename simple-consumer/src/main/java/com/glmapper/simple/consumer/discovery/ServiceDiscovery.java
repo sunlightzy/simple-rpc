@@ -42,10 +42,10 @@ public class ServiceDiscovery {
         if (size > 0) {
             if (size == 1) {
                 data = nodes.get(0);
-                LOGGER.debug("using only data: {}", data);
+                LOGGER.debug("using only node: {}", data);
             } else {
                 data = nodes.get(ThreadLocalRandom.current().nextInt(size));
-                LOGGER.debug("using random data: {}", data);
+                LOGGER.debug("using random node: {}", data);
             }
         }
         return data;
