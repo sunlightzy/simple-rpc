@@ -68,7 +68,7 @@ public class ServiceDiscovery {
             LOGGER.info("node data: {}", nodes);
             this.nodes = nodes;
         } catch (KeeperException | InterruptedException e) {
-            LOGGER.error("节点监控出错，原因：", e);
+            LOGGER.error("zookeeper watch error,cause：", e);
         }
     }
 }
