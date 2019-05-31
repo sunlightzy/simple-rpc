@@ -21,7 +21,7 @@
         <spring.boot.version>1.5.14.RELEASE</spring.boot.version>
         <commons.collection4.version>4.0</commons.collection4.version>
         <cglib.version>3.1</cglib.version>
-        <zookeeper.version>3.4.9</zookeeper.version>
+        <zookeeper.version>3.4.14</zookeeper.version>
         <netty.version>4.0.24.Final</netty.version>
     </properties>
     <dependencyManagement>
